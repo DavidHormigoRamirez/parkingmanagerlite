@@ -21,7 +21,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.spring.CucumberContextConfiguration;
 
 @CucumberContextConfiguration
-public class ShowUsersSteps extends CucumberConfiguration {
+public class CucumberSteps extends CucumberConfiguration {
 
     @MockBean
     private UserService userService;
@@ -44,6 +44,14 @@ public class ShowUsersSteps extends CucumberConfiguration {
 
 
     }
+
+    @Given("un administrador esta en el formulario de creación")
+    public void openUserCreateForm()
+    {
+        driver.get("http://localhost:" + port + "/createUser");
+    }
+
+
 
     @When("el usuario hace click sobre el botón de Usuarios")
     public void clickUserButton(){
