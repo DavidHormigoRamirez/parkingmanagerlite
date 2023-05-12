@@ -38,20 +38,42 @@ public class CucumberSteps extends CucumberConfiguration {
         
     }
 
+    
     @Given("un usuario esta en la pagina inicial")
     public void openHome() {
         driver.get("http://localhost:" + port + "/");
 
+    }
+
+    @Then("se muestra la pagina inicial")
+    public void showIndex() {
+        WebElement actualHeading = driver.findElement(By.id("home-title"));
+        assertEquals("Bienvenidos al CPIFP Los Camaleones", actualHeading);
+    }
+
+    @Given("un usuario esta en la pagina de usuarios")
+    public void openUser() {
+        driver.get("http://localhost:" + port + "/users");
 
     }
 
-    @Given("un administrador esta en el formulario de creación")
-    public void openUserCreateForm()
-    {
-        driver.get("http://localhost:" + port + "/createUser");
+    @Then("se muestra la lista de usuarios")
+    public void showUserList() {
+        WebElement actualHeading = driver.findElement(By.id("users-title"));
+        assertEquals("Usuarios", actualHeading);
     }
 
+    @Given("un usuario esta en la pagina de sorteos")
+    public void openDraws() {
+        driver.get("http://localhost:" + port + "/draws");
 
+    }
+
+    @Then("se muestra la lista de sorteos")
+    public void showDrawList() {
+        WebElement actualHeading = driver.findElement(By.id("draws-title"));
+        assertEquals("Sorteos", actualHeading);
+    }
 
     @When("el usuario hace click sobre el botón de Usuarios")
     public void clickUserButton(){
@@ -64,4 +86,23 @@ public class CucumberSteps extends CucumberConfiguration {
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains("/users"));
     }
+
+    @When("el usuario hace click sobre el botón de Sorteos")
+    public void clickDrawButton(){
+        driver.findElement(By.id("to-draws-link")).click();
+
+    }
+
+    @Then("se muestran todos los sorteos del sistema")
+    public void navigateToDrawList(){
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains("/draws"));
+    }
+
+    @Given("un administrador esta en el formulario de creación")
+    public void openUserCreateForm()
+    {
+        driver.get("http://localhost:" + port + "/createUser");
+    }
+
 }
