@@ -143,7 +143,7 @@ public class CucumberSteps extends CucumberConfiguration {
      * ------------------
      */
     // Navegación a inicio
-    @When("el usuario hace click sobre el botón de Inicio")
+    @When("el usuario hace click sobre el boton de Inicio")
     public void clickIndexBtn(){
         driver.findElement(By.id("to-home-link")).click();
 
@@ -152,11 +152,11 @@ public class CucumberSteps extends CucumberConfiguration {
     @Then("se muestra la pagina de inicio")
     public void navigateToIndex(){
         String currentUrl = driver.getCurrentUrl();
-        assertTrue(currentUrl.contains("/ "));
+        assertTrue(currentUrl.contains("/"));
     }
 
     // Navegación a usuarios
-    @When("el usuario hace click sobre el botón de Usuarios")
+    @When("el usuario hace click sobre el boton de Usuarios")
     public void clickUserButton(){
         driver.findElement(By.id("to-users-link")).click();
 
@@ -169,7 +169,7 @@ public class CucumberSteps extends CucumberConfiguration {
     }
 
     // Navegación a sorteos
-    @When("el usuario hace click sobre el botón de Sorteos")
+    @When("el usuario hace click sobre el boton de Sorteos")
     public void clickDrawButton(){
         driver.findElement(By.id("to-draws-link")).click();
 
@@ -182,7 +182,7 @@ public class CucumberSteps extends CucumberConfiguration {
     }
 
     // Navegación a Formulario Usuario
-    @When("el usuario hace click sobre el botón de crear Usuarios")
+    @When("el usuario hace click sobre el boton de crear Usuarios")
     public void clickUserFormButton(){
         driver.findElement(By.id("users-button-create")).click();
 
@@ -195,7 +195,7 @@ public class CucumberSteps extends CucumberConfiguration {
     }
 
     // Navegación a Formulario Sorteo
-    @When("el usuario hace click sobre el botón de crear Sorteos")
+    @When("el usuario hace click sobre el boton de crear Sorteos")
     public void clickDrawFormButton(){
         driver.findElement(By.id("draws-button-create")).click();
 
@@ -210,7 +210,7 @@ public class CucumberSteps extends CucumberConfiguration {
     // Fin Test Navegación
 
 
-    @Given("un administrador esta en el formulario de creación")
+    @Given("un administrador esta en el formulario de creacion")
     public void openUserCreateForm()
     {
         driver.get("http://localhost:" + port + "/createUser");
