@@ -1,6 +1,6 @@
 # language: es
 Característica: test de navegacion
-  
+
 
   Escenario: Navegar a inicio desde inicio
     Dado un usuario esta en la pagina de inicio
@@ -56,10 +56,10 @@ Característica: test de navegacion
 
   Escenario: Navegar a formulario de sorteos
     Dado un usuario esta en la pagina de sorteos
-    Cuando el usuario hace click sobre el boton de Sorteos
+    Cuando el usuario hace click sobre el boton crear Sorteos
     Entonces se muestra el formulario de creacion de Sorteos
 
-  
+
   Escenario: Navegar a inicio desde formulario de sorteos
     Dado un usuario esta en el formulario de sorteos
     Cuando el usuario hace click sobre el boton de Inicio
@@ -75,7 +75,7 @@ Característica: test de navegacion
     Cuando el usuario hace click sobre el boton de Usuarios
     Entonces se muestra todos los usuarios del sistema
 
-  
+
   Escenario: Navegar a inicio desde formulario de usuarios
     Dado un usuario esta en el formulario de usuarios
     Cuando el usuario hace click sobre el boton de Inicio

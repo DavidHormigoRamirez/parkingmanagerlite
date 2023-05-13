@@ -1,19 +1,19 @@
 # language: es
 Característica: test de vistas
-  
+
 
   Escenario: Mostrar index
     Dado un usuario esta en la pagina de inicio
-    Entonces se muestra el titulo la pagina de inicio
+    Entonces se muestra el titulo de la pagina de inicio
 
   Escenario: Mostrar usuarios
     Dado un usuario esta en la pagina de usuarios
-    Entonces se muestra el titulo la pagina de usuarios
+    Entonces se muestra el titulo de la pagina de usuarios
     Y se muestra el boton de crear usuario
 
   Escenario: Mostrar sorteos
     Dado un usuario esta en la pagina de sorteos
-    Entonces se muestra el titulo la pagina de sorteos
+    Entonces se muestra el titulo de la pagina de sorteos
     Y se muestra el boton de crear sorteo
 
   Escenario: Mostrar formulario de usuarios

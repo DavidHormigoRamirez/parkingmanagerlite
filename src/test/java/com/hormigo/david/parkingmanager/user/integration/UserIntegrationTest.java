@@ -140,7 +140,7 @@ public class UserIntegrationTest {
         lastName2Field.sendKeys("Ramírez");
         final Select select = new Select(roleField);
         select.selectByVisibleText("Profesor");
-        final WebElement submitButton = chromeDriver.findElement(By.id("user-create-button-submit"));
+        final WebElement submitButton = chromeDriver.findElement(By.id("user-button-submit"));
         submitButton.click();
         final String expectedUrl = buildUrl("/users");
         assertEquals(expectedUrl,chromeDriver.getCurrentUrl());
@@ -167,7 +167,7 @@ public class UserIntegrationTest {
         final WebElement lastName1Field = chromeDriver.findElement(By.id("user-create-field-lastname1"));
         lastName1Field.sendKeys("Hormigo");
 
-        final WebElement submitButton = chromeDriver.findElement(By.id("user-create-button-submit"));
+        final WebElement submitButton = chromeDriver.findElement(By.id("user-button-submit"));
 
         submitButton.click();
         final String expectedUrl = buildUrl("/newUser");
@@ -185,7 +185,7 @@ public class UserIntegrationTest {
         final WebElement lastName1Field = chromeDriver.findElement(By.id("user-create-field-lastname1"));
         lastName1Field.sendKeys("Hormigo");
 
-        final WebElement submitButton = chromeDriver.findElement(By.id("user-create-button-submit"));
+        final WebElement submitButton = chromeDriver.findElement(By.id("user-button-submit"));
 
         submitButton.click();
         final WebElement error = chromeDriver.findElement(By.className("notification"));
@@ -208,7 +208,7 @@ public class UserIntegrationTest {
         final WebElement lastName1Field = chromeDriver.findElement(By.id("user-create-field-lastname1"));
         lastName1Field.sendKeys("Hormigo");
 
-        final WebElement submitButton = chromeDriver.findElement(By.id("user-create-button-submit"));
+        final WebElement submitButton = chromeDriver.findElement(By.id("user-button-submit"));
 
         submitButton.click();
         final WebElement error = chromeDriver.findElement(By.className("notification"));
@@ -229,7 +229,7 @@ public class UserIntegrationTest {
         final WebElement lastName1Field = chromeDriver.findElement(By.id("user-create-field-lastname1"));
         lastName1Field.clear();
 
-        final WebElement submitButton = chromeDriver.findElement(By.id("user-create-button-submit"));
+        final WebElement submitButton = chromeDriver.findElement(By.id("user-button-submit"));
 
         submitButton.click();
         final WebElement error = chromeDriver.findElement(By.className("notification"));
