@@ -38,17 +38,14 @@ public class CucumberSteps extends CucumberConfiguration {
         
     }
 
-    
-    @Given("un usuario esta en la pagina inicial")
+    /* -------------------------------
+     * Given de los diferentes inicios
+     * -------------------------------
+     */
+    @Given("un usuario esta en la pagina de inicio")
     public void openHome() {
         driver.get("http://localhost:" + port + "/");
 
-    }
-
-    @Then("se muestra la pagina inicial")
-    public void showIndex() {
-        WebElement actualHeading = driver.findElement(By.id("home-title"));
-        assertEquals("Bienvenidos al CPIFP Los Camaleones", actualHeading);
     }
 
     @Given("un usuario esta en la pagina de usuarios")
@@ -57,24 +54,108 @@ public class CucumberSteps extends CucumberConfiguration {
 
     }
 
-    @Then("se muestra la lista de usuarios")
-    public void showUserList() {
-        WebElement actualHeading = driver.findElement(By.id("users-title"));
-        assertEquals("Usuarios", actualHeading);
-    }
-
     @Given("un usuario esta en la pagina de sorteos")
     public void openDraws() {
         driver.get("http://localhost:" + port + "/draws");
 
     }
 
-    @Then("se muestra la lista de sorteos")
-    public void showDrawList() {
+    @Given("un usuario esta en el formulario de usuarios")
+    public void openUsersForm() {
+        driver.get("http://localhost:" + port + "/newUser");
+
+    }
+
+    @Given("un usuario esta en el formulario de sorteos")
+    public void openDrawsForm() {
+        driver.get("http://localhost:" + port + "/newDraw");
+
+    }
+    // Fin Given
+
+    /* ------------------------------
+     * Test de verificación de Vistas
+     * ------------------------------
+     */
+    // Indice
+    @Then("se muestra el titulo la pagina de inicio")
+    public void showIndex() {
+        WebElement actualHeading = driver.findElement(By.id("home-title"));
+        assertEquals("Bienvenidos al CPIFP Los Camaleones", actualHeading);
+    }
+
+    @Then("se muestra el titulo la pagina de usuarios")
+    public void showUserTitle() {
+        WebElement actualHeading = driver.findElement(By.id("users-title"));
+        assertEquals("Usuarios", actualHeading);
+    }
+
+    // Usuario
+    @Then("se muestra el boton de crear usuario")
+    public void showUserCreateBtn() {
+        WebElement createBtn = driver.findElement(By.id("users-button-create"));
+        assertEquals("Crear nuevo usuario", createBtn);
+    }
+
+    @Then("se muestra el titulo la pagina de sorteos")
+    public void showDrawTitle() {
         WebElement actualHeading = driver.findElement(By.id("draws-title"));
         assertEquals("Sorteos", actualHeading);
     }
 
+    // Sorteo
+    @Then("se muestra el boton de crear sorteo")
+    public void showDrawCreateBtn() {
+        WebElement createBtn = driver.findElement(By.id("draws-button-create"));
+        assertEquals("Crear sorteo", createBtn);
+    }
+
+    // Formulario Usuario
+    @Then("se muestra el titulo de formulario de usuarios")
+    public void showUserFormTitle() {
+        WebElement actualHeading = driver.findElement(By.id("user-form-title"));
+        assertEquals("Crear nuevo usuario", actualHeading);
+    }
+
+    @Then("se muestra el boton de usuario submit")
+    public void showUserSubmitBtn() {
+        WebElement createBtn = driver.findElement(By.id("user-button-submit"));
+        assertEquals("Crear", createBtn);
+    }
+
+    // Formulario Sorteo
+    @Then("se muestra el titulo de formulario de sorteos")
+    public void showDrawFormTitle() {
+        WebElement actualHeading = driver.findElement(By.id("draw-form-title"));
+        assertEquals("Crear nuevo sorteo", actualHeading);
+    }
+
+    @Then("se muestra el boton de sorteo submit")
+    public void showDrawSubmitBtn() {
+        WebElement createBtn = driver.findElement(By.id("draw-button-submit"));
+        assertEquals("Crear", createBtn);
+    }
+    // Fin Test Vistas
+
+
+    /* ------------------
+     * Test de navegación
+     * ------------------
+     */
+    // Navegación a inicio
+    @When("el usuario hace click sobre el botón de Inicio")
+    public void clickIndexBtn(){
+        driver.findElement(By.id("to-home-link")).click();
+
+    }
+
+    @Then("se muestra la pagina de inicio")
+    public void navigateToIndex(){
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains("/ "));
+    }
+
+    // Navegación a usuarios
     @When("el usuario hace click sobre el botón de Usuarios")
     public void clickUserButton(){
         driver.findElement(By.id("to-users-link")).click();
@@ -87,6 +168,7 @@ public class CucumberSteps extends CucumberConfiguration {
         assertTrue(currentUrl.contains("/users"));
     }
 
+    // Navegación a sorteos
     @When("el usuario hace click sobre el botón de Sorteos")
     public void clickDrawButton(){
         driver.findElement(By.id("to-draws-link")).click();
@@ -98,6 +180,35 @@ public class CucumberSteps extends CucumberConfiguration {
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains("/draws"));
     }
+
+    // Navegación a Formulario Usuario
+    @When("el usuario hace click sobre el botón de crear Usuarios")
+    public void clickUserFormButton(){
+        driver.findElement(By.id("users-button-create")).click();
+
+    }
+
+    @Then("se muestra el formulario de creacion de Usuarios")
+    public void navigateToUsersForm(){
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains("/newUser"));
+    }
+
+    // Navegación a Formulario Sorteo
+    @When("el usuario hace click sobre el botón de crear Sorteos")
+    public void clickDrawFormButton(){
+        driver.findElement(By.id("draws-button-create")).click();
+
+    }
+
+    @Then("se muestra el formulario de creacion de Sorteos")
+    public void navigateToDrawForm(){
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains("/newDraw"));
+    }
+
+    // Fin Test Navegación
+
 
     @Given("un administrador esta en el formulario de creación")
     public void openUserCreateForm()

@@ -3,21 +3,25 @@ Característica: test de vistas
   
 
   Escenario: Mostrar index
-    Dado un usuario esta en la pagina inicial
-    Entonces se muestra la pagina inicial
+    Dado un usuario esta en la pagina de inicio
+    Entonces se muestra el titulo la pagina de inicio
 
-  Escenario: Mostrar lista de usuarios
-    Dado un usuario esta en la lista de usuarios
-    Entonces se muestra la lista de usuarios
+  Escenario: Mostrar usuarios
+    Dado un usuario esta en la pagina de usuarios
+    Entonces se muestra el titulo la pagina de usuarios
+    Y se muestra el boton de crear usuario
 
-  Escenario: Mostrar lista de sorteos
-    Dado un usuario esta en la lista de sorteos
-    Entonces se muestra la lista de sorteos
+  Escenario: Mostrar sorteos
+    Dado un usuario esta en la pagina de sorteos
+    Entonces se muestra el titulo la pagina de sorteos
+    Y se muestra el boton de crear sorteo
 
   Escenario: Mostrar formulario de usuarios
     Dado un usuario esta en el formulario de usuarios
-    Entonces se muestra el formulario de usuarios
+    Entonces se muestra el titulo de formulario de usuarios
+    Y se muestra el boton de usuario submit
 
   Escenario: Mostrar formulario de sorteos
     Dado un usuario esta en el formulario de sorteos
-    Entonces se muestra el formulario de sorteos
+    Entonces se muestra el titulo de formulario de sorteos
+    Y se muestra el boton de sorteo submit

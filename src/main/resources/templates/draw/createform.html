@@ -28,18 +28,19 @@
         </div>
       </div>
     </nav>
-<div class="column is-half is-offset-one-quarter">
-    <form th:action="@{/newDraw}" th:object="${drawDao}"action="#" method="post">
-        <div class="field">
-            <label id="draw-label-description" class="label">Descripción</label>
-            <div class="control">
-                <input id="draw-field-description" th:field="*{description}" type="text" placeholder="Descripción" class="input">
-            </div>
+  <h1 id="draw-form-title" class="title is-1">Crear nuevo sorteo</h1>
+  <div class="column is-half is-offset-one-quarter">
+  <form th:action="@{/newDraw}" th:object="${drawDao}"action="#" method="post">
+      <div class="field">
+          <label id="draw-label-description" class="label">Descripción</label>
+          <div class="control">
+              <input id="draw-field-description" th:field="*{description}" type="text" placeholder="Descripción" class="input">
           </div>
-        
-        <button id="draw-button-submit" type="submit" class="button is-primary">Crear</button> 
+        </div>
+      
+      <button id="draw-button-submit" type="submit" class="button is-primary">Crear</button> 
 
-    </form>
-    </div>
+  </form>
+  </div>
 </body>
 </html>
