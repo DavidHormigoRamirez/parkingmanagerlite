@@ -18,7 +18,6 @@ public class UserTest {
         assertEquals(expected,actual);
     }
 
-
     @Test
     void testGetLastName1() {
         String expected = "Hormigo";
