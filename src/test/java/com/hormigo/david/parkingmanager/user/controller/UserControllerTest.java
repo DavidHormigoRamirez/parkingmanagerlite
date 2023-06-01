@@ -11,19 +11,22 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hormigo.david.parkingmanager.core.exceptions.UserExistsException;
 import com.hormigo.david.parkingmanager.user.domain.Role;
 import com.hormigo.david.parkingmanager.user.domain.User;
 import com.hormigo.david.parkingmanager.user.domain.UserDao;
 import com.hormigo.david.parkingmanager.user.service.UserService;
 import com.hormigo.david.parkingmanager.user.service.UserServiceImpl;
 
+import io.cucumber.java.Before;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -33,12 +36,27 @@ public class UserControllerTest {
     
     @Autowired
     private MockMvc mockMvc;
+    private ObjectMapper mapper;
     @MockBean
     private UserService userService;
+    @BeforeEach
+    public void initMapper() {
+        this.mapper = new ObjectMapper();
+    }
+
+    @Test
+    public void userDuplicated() throws Exception {
+        UserDao dao = new UserDao("da@correo.es", "David", "Hormigo", "Ramírez", Role.PROFESSOR);
+        String json = mapper.writeValueAsString(dao);
+        doThrow(UserExistsException.class).when(this.userService).register(any(UserDao.class));
+        this.mockMvc.perform(post("/api/users")
+        .contentType("application/json").content(json))
+        .andDo(print())
+        .andExpect(status().is4xxClientError());
+    }
 
     @Test
     public void testPositive() throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
         UserDao dao = new UserDao("da@correo.es", "David", "Hormigo", "Ramírez", Role.PROFESSOR);
         String json = mapper.writeValueAsString(dao);
         when(this.userService.register(any(UserDao.class))).thenReturn(new User("da@correo.es","David","Hormigo","Ramírez",Role.PROFESSOR));
@@ -65,4 +83,6 @@ public class UserControllerTest {
                     
 
     }
+
+ 
 }
